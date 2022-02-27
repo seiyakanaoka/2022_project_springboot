@@ -17,4 +17,15 @@ public class QualService {
     public List<QualEntity> getQualList() {
         return qualRepository.findAll();
     }
+
+    public QualEntity getQual(long id) {
+        return qualRepository.findById(id).orElseThrow();
+    }
+
+    public QualEntity postQual(QualEntity qual) {
+        QualEntity newQual = new QualEntity();
+        qual.setId(qual.getId());
+        qual.setTitle(qual.getTitle());
+        return qualRepository.save(qual);
+    }
 }
